@@ -1,6 +1,6 @@
-# metasv_mvc_client.OutpointApi
+# mvcapi-sdk.OutpointApi
 
-All URIs are relative to *https://api-mvc-testnet.metasv.com*
+All URIs are relative to *https://testnet.mvcapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -19,14 +19,14 @@ Get detailed info for a utxo(or txo if spent), Only outputs spent no longer than
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
 import time
-import metasv_mvc_client
-from metasv_mvc_client.api import outpoint_api
-from metasv_mvc_client.model.output_info import OutputInfo
+import mvcapi-sdk
+from mvcapi-sdk.api import outpoint_api
+from mvcapi-sdk.model.output_info import OutputInfo
 from pprint import pprint
-# Defining the host is optional and defaults to https://api-mvc-testnet.metasv.com
+# Defining the host is optional and defaults to https://testnet.mvcapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = metasv_mvc_client.Configuration(
-    host = "https://api-mvc-testnet.metasv.com"
+configuration = mvcapi-sdk.Configuration(
+    host = "https://testnet.mvcapi.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -35,12 +35,12 @@ configuration = metasv_mvc_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = metasv_mvc_client.Configuration(
+configuration = mvcapi-sdk.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with metasv_mvc_client.ApiClient(configuration) as api_client:
+with mvcapi-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = outpoint_api.OutpointApi(api_client)
     txid = "txid_example" # str | The txid of the output
@@ -51,7 +51,7 @@ with metasv_mvc_client.ApiClient(configuration) as api_client:
         # Get tx output(outpoint for vin) spent status.
         api_response = api_instance.outpoint_txid_index_get(txid, index)
         pprint(api_response)
-    except metasv_mvc_client.ApiException as e:
+    except mvcapi-sdk.ApiException as e:
         print("Exception when calling OutpointApi->outpoint_txid_index_get: %s\n" % e)
 ```
 

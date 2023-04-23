@@ -1,6 +1,6 @@
-# metasv_mvc_client.XpubApi
+# mvcapi-sdk.XpubApi
 
-All URIs are relative to *https://api-mvc-testnet.metasv.com*
+All URIs are relative to *https://testnet.mvcapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -19,14 +19,15 @@ Get xpub address type and index. Only index under /0/70 /1/30 is valid. Otherwis
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
 import time
-import metasv_mvc_client
-from metasv_mvc_client.api import xpub_api
-from metasv_mvc_client.model.xpub_address import XpubAddress
+import mvcapi-sdk
+from mvcapi-sdk.api import xpub_api
+from mvcapi-sdk.model.xpub_address import XpubAddress
+from mvcapi-sdk.model.error_response import ErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api-mvc-testnet.metasv.com
+# Defining the host is optional and defaults to https://testnet.mvcapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = metasv_mvc_client.Configuration(
-    host = "https://api-mvc-testnet.metasv.com"
+configuration = mvcapi-sdk.Configuration(
+    host = "https://testnet.mvcapi.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -35,12 +36,12 @@ configuration = metasv_mvc_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = metasv_mvc_client.Configuration(
+configuration = mvcapi-sdk.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with metasv_mvc_client.ApiClient(configuration) as api_client:
+with mvcapi-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = xpub_api.XpubApi(api_client)
     xpub = "xpub_example" # str | the requested xpub
@@ -51,7 +52,7 @@ with metasv_mvc_client.ApiClient(configuration) as api_client:
         # Get xpub address type and index. Only index under /0/70 /1/30 is valid. Otherwise not found.
         api_response = api_instance.xpub_lite_xpub_address_address_get(xpub, address)
         pprint(api_response)
-    except metasv_mvc_client.ApiException as e:
+    except mvcapi-sdk.ApiException as e:
         print("Exception when calling XpubApi->xpub_lite_xpub_address_address_get: %s\n" % e)
 ```
 
@@ -79,7 +80,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get xpub address success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 **404** | Address not found in the xpub. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -96,14 +97,15 @@ This api returns confirmed balance(same as address balance), not sumed utxos.
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
 import time
-import metasv_mvc_client
-from metasv_mvc_client.api import xpub_api
-from metasv_mvc_client.model.xpub_lite_balance import XpubLiteBalance
+import mvcapi-sdk
+from mvcapi-sdk.api import xpub_api
+from mvcapi-sdk.model.xpub_lite_balance import XpubLiteBalance
+from mvcapi-sdk.model.error_response import ErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api-mvc-testnet.metasv.com
+# Defining the host is optional and defaults to https://testnet.mvcapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = metasv_mvc_client.Configuration(
-    host = "https://api-mvc-testnet.metasv.com"
+configuration = mvcapi-sdk.Configuration(
+    host = "https://testnet.mvcapi.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -112,12 +114,12 @@ configuration = metasv_mvc_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = metasv_mvc_client.Configuration(
+configuration = mvcapi-sdk.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with metasv_mvc_client.ApiClient(configuration) as api_client:
+with mvcapi-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = xpub_api.XpubApi(api_client)
     xpub = "xpub_example" # str | the xpub to search
@@ -127,7 +129,7 @@ with metasv_mvc_client.ApiClient(configuration) as api_client:
         # Get xpub balances including confirmed and unconfirmed.
         api_response = api_instance.xpub_lite_xpub_balance_get(xpub)
         pprint(api_response)
-    except metasv_mvc_client.ApiException as e:
+    except mvcapi-sdk.ApiException as e:
         print("Exception when calling XpubApi->xpub_lite_xpub_balance_get: %s\n" % e)
 ```
 
@@ -154,7 +156,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get xpub balance success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -168,14 +170,15 @@ Get xpub utxos by specific xpub(300 per page).
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
 import time
-import metasv_mvc_client
-from metasv_mvc_client.api import xpub_api
-from metasv_mvc_client.model.xpub_utxo import XpubUtxo
+import mvcapi-sdk
+from mvcapi-sdk.api import xpub_api
+from mvcapi-sdk.model.xpub_utxo import XpubUtxo
+from mvcapi-sdk.model.error_response import ErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://api-mvc-testnet.metasv.com
+# Defining the host is optional and defaults to https://testnet.mvcapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = metasv_mvc_client.Configuration(
-    host = "https://api-mvc-testnet.metasv.com"
+configuration = mvcapi-sdk.Configuration(
+    host = "https://testnet.mvcapi.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -184,12 +187,12 @@ configuration = metasv_mvc_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = metasv_mvc_client.Configuration(
+configuration = mvcapi-sdk.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with metasv_mvc_client.ApiClient(configuration) as api_client:
+with mvcapi-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = xpub_api.XpubApi(api_client)
     xpub = "xpub_example" # str | the requested xpub
@@ -200,7 +203,7 @@ with metasv_mvc_client.ApiClient(configuration) as api_client:
         # Get xpub utxos by specific xpub(300 per page).
         api_response = api_instance.xpub_lite_xpub_utxo_get(xpub)
         pprint(api_response)
-    except metasv_mvc_client.ApiException as e:
+    except mvcapi-sdk.ApiException as e:
         print("Exception when calling XpubApi->xpub_lite_xpub_utxo_get: %s\n" % e)
 
     # example passing only required values which don't have defaults set
@@ -209,7 +212,7 @@ with metasv_mvc_client.ApiClient(configuration) as api_client:
         # Get xpub utxos by specific xpub(300 per page).
         api_response = api_instance.xpub_lite_xpub_utxo_get(xpub, limit=limit)
         pprint(api_response)
-    except metasv_mvc_client.ApiException as e:
+    except mvcapi-sdk.ApiException as e:
         print("Exception when calling XpubApi->xpub_lite_xpub_utxo_get: %s\n" % e)
 ```
 
@@ -237,7 +240,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Get xpub utxos success. |  -  |
-**401** |  |  -  |
+**401** | Access token is missing or invalid |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

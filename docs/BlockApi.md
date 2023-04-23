@@ -1,6 +1,6 @@
-# metasv_mvc_client.BlockApi
+# mvcapi-sdk.BlockApi
 
-All URIs are relative to *https://api-mvc-testnet.metasv.com*
+All URIs are relative to *https://testnet.mvcapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **block_block_id_get**
-> BlockHeader block_block_id_get(block_id)
+> BlockHeaderIndex block_block_id_get(block_id)
 
 Get block request by height or hash
 
@@ -19,14 +19,14 @@ Get block request by height or hash
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
 import time
-import metasv_mvc_client
-from metasv_mvc_client.api import block_api
-from metasv_mvc_client.model.block_header import BlockHeader
+import mvcapi-sdk
+from mvcapi-sdk.api import block_api
+from mvcapi-sdk.model.block_header_index import BlockHeaderIndex
 from pprint import pprint
-# Defining the host is optional and defaults to https://api-mvc-testnet.metasv.com
+# Defining the host is optional and defaults to https://testnet.mvcapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = metasv_mvc_client.Configuration(
-    host = "https://api-mvc-testnet.metasv.com"
+configuration = mvcapi-sdk.Configuration(
+    host = "https://testnet.mvcapi.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -35,12 +35,12 @@ configuration = metasv_mvc_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = metasv_mvc_client.Configuration(
+configuration = mvcapi-sdk.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with metasv_mvc_client.ApiClient(configuration) as api_client:
+with mvcapi-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = block_api.BlockApi(api_client)
     block_id = "blockId_example" # str | The block id, height or hash acceptable.
@@ -50,7 +50,7 @@ with metasv_mvc_client.ApiClient(configuration) as api_client:
         # Get block request by height or hash
         api_response = api_instance.block_block_id_get(block_id)
         pprint(api_response)
-    except metasv_mvc_client.ApiException as e:
+    except mvcapi-sdk.ApiException as e:
         print("Exception when calling BlockApi->block_block_id_get: %s\n" % e)
 ```
 
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BlockHeader**](BlockHeader.md)
+[**BlockHeaderIndex**](BlockHeaderIndex.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **block_get**
-> [BlockHeader] block_get()
+> [BlockHeaderPage] block_get()
 
 Get recent block list by paging. 30 items per page.
 
@@ -91,14 +91,14 @@ Get recent block list by paging. 30 items per page.
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
 import time
-import metasv_mvc_client
-from metasv_mvc_client.api import block_api
-from metasv_mvc_client.model.block_header import BlockHeader
+import mvcapi-sdk
+from mvcapi-sdk.api import block_api
+from mvcapi-sdk.model.block_header_page import BlockHeaderPage
 from pprint import pprint
-# Defining the host is optional and defaults to https://api-mvc-testnet.metasv.com
+# Defining the host is optional and defaults to https://testnet.mvcapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = metasv_mvc_client.Configuration(
-    host = "https://api-mvc-testnet.metasv.com"
+configuration = mvcapi-sdk.Configuration(
+    host = "https://testnet.mvcapi.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -107,12 +107,12 @@ configuration = metasv_mvc_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = metasv_mvc_client.Configuration(
+configuration = mvcapi-sdk.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with metasv_mvc_client.ApiClient(configuration) as api_client:
+with mvcapi-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = block_api.BlockApi(api_client)
     last = 1 # int | paging flag, height of last item in last page (optional)
@@ -123,7 +123,7 @@ with metasv_mvc_client.ApiClient(configuration) as api_client:
         # Get recent block list by paging. 30 items per page.
         api_response = api_instance.block_get(last=last)
         pprint(api_response)
-    except metasv_mvc_client.ApiException as e:
+    except mvcapi-sdk.ApiException as e:
         print("Exception when calling BlockApi->block_get: %s\n" % e)
 ```
 
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[BlockHeader]**](BlockHeader.md)
+[**[BlockHeaderPage]**](BlockHeaderPage.md)
 
 ### Authorization
 
@@ -163,14 +163,14 @@ Get current blockchain info from full node.
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
 import time
-import metasv_mvc_client
-from metasv_mvc_client.api import block_api
-from metasv_mvc_client.model.blockchain_info import BlockchainInfo
+import mvcapi-sdk
+from mvcapi-sdk.api import block_api
+from mvcapi-sdk.model.blockchain_info import BlockchainInfo
 from pprint import pprint
-# Defining the host is optional and defaults to https://api-mvc-testnet.metasv.com
+# Defining the host is optional and defaults to https://testnet.mvcapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = metasv_mvc_client.Configuration(
-    host = "https://api-mvc-testnet.metasv.com"
+configuration = mvcapi-sdk.Configuration(
+    host = "https://testnet.mvcapi.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -179,12 +179,12 @@ configuration = metasv_mvc_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = metasv_mvc_client.Configuration(
+configuration = mvcapi-sdk.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with metasv_mvc_client.ApiClient(configuration) as api_client:
+with mvcapi-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = block_api.BlockApi(api_client)
 
@@ -193,7 +193,7 @@ with metasv_mvc_client.ApiClient(configuration) as api_client:
         # Get current blockchain info from full node.
         api_response = api_instance.block_info_get()
         pprint(api_response)
-    except metasv_mvc_client.ApiException as e:
+    except mvcapi-sdk.ApiException as e:
         print("Exception when calling BlockApi->block_info_get: %s\n" % e)
 ```
 

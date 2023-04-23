@@ -1,6 +1,6 @@
-# metasv_mvc_client.MerchantApi
+# mvcapi-sdk.MerchantApi
 
-All URIs are relative to *https://api-mvc-testnet.metasv.com*
+All URIs are relative to *https://testnet.mvcapi.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -19,15 +19,15 @@ Selects a set of Utxos with total value higher than the given amount from a give
 * Bearer (JWT) Authentication (bearerAuth):
 ```python
 import time
-import metasv_mvc_client
-from metasv_mvc_client.api import merchant_api
-from metasv_mvc_client.model.utxo_pick_request import UtxoPickRequest
-from metasv_mvc_client.model.address_utxo import AddressUtxo
+import mvcapi-sdk
+from mvcapi-sdk.api import merchant_api
+from mvcapi-sdk.model.utxo_pick_request import UtxoPickRequest
+from mvcapi-sdk.model.address_utxo import AddressUtxo
 from pprint import pprint
-# Defining the host is optional and defaults to https://api-mvc-testnet.metasv.com
+# Defining the host is optional and defaults to https://testnet.mvcapi.com
 # See configuration.py for a list of all supported configuration parameters.
-configuration = metasv_mvc_client.Configuration(
-    host = "https://api-mvc-testnet.metasv.com"
+configuration = mvcapi-sdk.Configuration(
+    host = "https://testnet.mvcapi.com"
 )
 
 # The client must configure the authentication and authorization parameters
@@ -36,12 +36,12 @@ configuration = metasv_mvc_client.Configuration(
 # satisfies your auth use case.
 
 # Configure Bearer authorization (JWT): bearerAuth
-configuration = metasv_mvc_client.Configuration(
+configuration = mvcapi-sdk.Configuration(
     access_token = 'YOUR_BEARER_TOKEN'
 )
 
 # Enter a context with an instance of the API client
-with metasv_mvc_client.ApiClient(configuration) as api_client:
+with mvcapi-sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = merchant_api.MerchantApi(api_client)
     utxo_pick_request = UtxoPickRequest(
@@ -57,7 +57,7 @@ with metasv_mvc_client.ApiClient(configuration) as api_client:
         # Pick utxos by addresses and amount.
         api_response = api_instance.merchant_utxo_post(utxo_pick_request=utxo_pick_request)
         pprint(api_response)
-    except metasv_mvc_client.ApiException as e:
+    except mvcapi-sdk.ApiException as e:
         print("Exception when calling MerchantApi->merchant_utxo_post: %s\n" % e)
 ```
 
